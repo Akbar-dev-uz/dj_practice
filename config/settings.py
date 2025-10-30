@@ -25,7 +25,7 @@ SECRET_KEY = 'django-insecure-@(o-4l6kn&7)5k^#_6wk7vv@+7+woi64c&fo@fs$mu(mst8q7p
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['localhost', '127.0.0.1', 'apocatastatic-giselle-dialectologic.ngrok-free.dev']
+ALLOWED_HOSTS = ['localhost', '127.0.0.1', 'apocatastatic-giselle-dialectologic.ngrok-free.dev', '*']
 CSRF_TRUSTED_ORIGINS = [
     'https://apocatastatic-giselle-dialectologic.ngrok-free.dev',
 ]
