@@ -1,0 +1,85 @@
+{% extends 'store/base.html' %}
+
+{% load crispy_forms_tags %}
+
+{% block title %}
+    Edit Profile
+{% endblock %}
+
+{% block content %}
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Orbitron', sans-serif;
+            color: #ffffff;
+            min-height: 100vh;
+            background: linear-gradient(135deg, #0f2027, #203a43, #2c5364, #1a1a2e, #16213e);
+            background-size: 400% 400%;
+            animation: galaxy 30s ease infinite;
+        }
+
+        @keyframes galaxy {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        .glass-card {
+            background: rgba(255, 255, 255, 0.08);
+            backdrop-filter: blur(20px);
+            border-radius: 20px;
+            box-shadow: 0 0 20px #00e5ff, 0 0 40px #00e5ff;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            padding: 2rem;
+            margin: 50px auto;
+            max-width: 600px;
+        }
+
+        .btn-neon {
+            font-weight: 600;
+            font-size: 1rem;
+            color: #00e5ff;
+            background: transparent;
+            border: 2px solid #00e5ff;
+            box-shadow: 0 0 10px #00e5ff, 0 0 25px #00e5ff;
+            transition: all 0.3s ease-in-out;
+            border-radius: 10px;
+            padding: 0.5rem 1rem;
+            cursor: pointer;
+            user-select: none;
+            text-decoration: none;
+        }
+
+        .btn-neon:hover, .btn-neon:focus {
+            background: #00e5ff;
+            color: #001f27;
+            box-shadow:
+                    0 0 15px #00e5ff,
+                    0 0 30px #00e5ff,
+                    0 0 50px #00e5ff,
+                    0 0 70px #00e5ff;
+            outline: none;
+        }
+    </style>
+
+    <div class="glass-card">
+        <h2 class="mb-4 text-center">🌌 Edit Profile</h2>
+        <form action="{% url 'edit_profile' %}" method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            {{ form|crispy }}
+            <label style="color: white;">Password</label><br>
+            <div class="form-group mt-2 mb-3" style="background: white; border-radius: 10px; padding: 10px;">
+                🔑 <a href="{% url 'reset_password' %}" style="color: #007bff; text-decoration: underline;">Сменить пароль?</a>
+            </div>
+
+            <div class="d-flex justify-content-between mt-3">
+                <div class="d-flex justify-content-between mt-3">
+                    <a href="{% url 'profile' %}" class="btn-neon">← Назад</a>
+                    <button type="submit" class="btn-neon">💾 Сохранить</button>
+                </div>
+
+            </div>
+        </form>
+    </div>
+{% endblock %}

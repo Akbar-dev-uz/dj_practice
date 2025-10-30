@@ -1,0 +1,153 @@
+{% extends 'store/base.html' %}
+
+{% block title %}
+    Detail
+{% endblock %}
+
+{% block content %}
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Orbitron', sans-serif;
+            color: #ffffff;
+            min-height: 100vh;
+            background: linear-gradient(135deg, #0f2027, #203a43, #2c5364, #1a1a2e, #16213e);
+            background-size: 400% 400%;
+            animation: galaxy 30s ease infinite;
+        }
+
+        @keyframes galaxy {
+            0% {
+                background-position: 0% 50%;
+            }
+            50% {
+                background-position: 100% 50%;
+            }
+            100% {
+                background-position: 0% 50%;
+            }
+        }
+
+        .glass-card {
+            background: rgba(255, 255, 255, 0.08);
+            backdrop-filter: blur(20px);
+            border-radius: 20px;
+            box-shadow: 0 0 20px #00e5ff, 0 0 40px #00e5ff;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            padding: 2rem;
+            margin-top: 50px;
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: space-between;
+            gap: 2rem;
+        }
+
+        .product-details {
+            flex: 1;
+        }
+
+        .product-title {
+            font-size: 2.2rem;
+            font-weight: 700;
+            text-shadow: 0 0 10px #00e5ff, 0 0 20px #00e5ff;
+            margin-bottom: 1rem;
+        }
+
+        .product-description {
+            font-size: 1.1rem;
+            text-shadow: 0 0 5px #00e5ff;
+            margin-bottom: 1rem;
+        }
+
+        .product-price {
+            font-size: 1.6rem;
+            font-weight: bold;
+            color: mediumspringgreen;
+            text-shadow: 0 0 10px mediumspringgreen;
+            margin-bottom: 1rem;
+        }
+
+        .product-owner {
+            font-size: 1rem;
+            color: #00e5ff;
+            text-shadow: 0 0 5px #00e5ff;
+            margin-bottom: 1rem;
+        }
+
+        .product-image {
+            max-width: 400px;
+            height: auto;
+            border: 2px solid #00e5ff;
+            box-shadow: 0 0 20px #00e5ff;
+            border-radius: 10px;
+        }
+
+        .btn-neon {
+            font-weight: 600;
+            font-size: 1rem;
+            color: #00e5ff;
+            background: transparent;
+            border: 2px solid #00e5ff;
+            box-shadow: 0 0 10px #00e5ff, 0 0 25px #00e5ff;
+            transition: all 0.3s ease-in-out;
+            border-radius: 10px;
+            padding: 0.5rem 1rem;
+            cursor: pointer;
+            user-select: none;
+            display: inline-block;
+            text-decoration: none;
+        }
+
+        .btn-neon:hover, .btn-neon:focus {
+            background: #00e5ff;
+            color: #001f27;
+            box-shadow: 0 0 15px #00e5ff,
+            0 0 30px #00e5ff,
+            0 0 50px #00e5ff,
+            0 0 70px #00e5ff;
+            outline: none;
+        }
+
+        @media (max-width: 768px) {
+            .glass-card {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .product-image {
+                max-width: 100%;
+            }
+        }
+    </style>
+
+    <main class="flex-shrink-0">
+        <div class="container glass-card">
+            <div class="product-details">
+                <h1 class="product-title">{{ product.title }}</h1>
+
+                <div class="product-owner">🌟 Owner: {{ product.owner.username }}</div>
+
+                <p class="product-description">{{ product.description }}</p>
+                <p class="product-price">Цена: ${{ product.price }}</p>
+
+                <a href="{% url 'home' %}" class="btn-neon mt-3">← Назад к товарам</a>
+            </div>
+
+            <div>
+                {% if product.image %}
+                    <img src="{{ product.image.url }}" class="product-image" alt="{{ product.title }}">
+                {% else %}
+                    <svg class="bd-placeholder-img product-image" width="400" height="250"
+                         xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Thumbnail"
+                         preserveAspectRatio="xMidYMid slice" focusable="false">
+                        <title>Placeholder</title>
+                        <rect width="100%" height="100%" fill="#55595c"></rect>
+                        <text x="50%" y="50%" fill="#eceeef" dy=".3em" text-anchor="middle">{{ product.title }}</text>
+                    </svg>
+                {% endif %}
+            </div>
+        </div>
+    </main>
+{% endblock %}

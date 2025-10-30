@@ -1,0 +1,96 @@
+{% extends 'store/base.html' %}
+
+{% block title %}
+    Your Products
+{% endblock %}
+
+{% block content %}
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Orbitron', sans-serif;
+            color: #ffffff;
+            min-height: 100vh;
+            background: linear-gradient(135deg, #0f2027, #203a43, #2c5364, #1a1a2e, #16213e);
+            background-size: 400% 400%;
+            animation: galaxy 30s ease infinite;
+        }
+
+        @keyframes galaxy {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        .glass-card {
+            background: rgba(255, 255, 255, 0.07);
+            backdrop-filter: blur(20px);
+            border-radius: 20px;
+            box-shadow: 0 0 20px #00e5ff, 0 0 40px #00e5ff;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .btn-neon {
+            font-weight: 600;
+            font-size: 1rem;
+            color: #00e5ff;
+            background: transparent;
+            border: 2px solid #00e5ff;
+            box-shadow: 0 0 10px #00e5ff, 0 0 25px #00e5ff;
+            transition: all 0.3s ease-in-out;
+            border-radius: 10px;
+            padding: 0.5rem 1rem;
+            cursor: pointer;
+            user-select: none;
+            display: inline-block;
+            text-decoration: none;
+        }
+
+        .btn-neon:hover, .btn-neon:focus {
+            background: #00e5ff;
+            color: #001f27;
+            box-shadow:
+                    0 0 15px #00e5ff,
+                    0 0 30px #00e5ff,
+                    0 0 50px #00e5ff,
+                    0 0 70px #00e5ff;
+            outline: none;
+        }
+    </style>
+
+    <main class="container mt-5">
+        <h1 class="mb-4 text-center card-head" style="text-shadow: 0 0 10px #00e5ff; margin-top: 100px;">🌌 Your Products</h1>
+
+        {% if products %}
+            <div class="row row-cols-1 row-cols-md-3 g-4">
+                {% for product in products %}
+                    <div class="col">
+                        <div class="card h-100 glass-card">
+                            {% if product.image %}
+                                <img src="{{ product.image.url }}" class="card-img-top" alt="{{ product.title }}"
+                                     style="height: 200px; object-fit: cover; border-radius: 20px 20px 0 0;">
+                            {% else %}
+                                <img src="https://via.placeholder.com/300x200?text=No+Image"
+                                     class="card-img-top"
+                                     alt="Нет изображения"
+                                     style="height: 200px; object-fit: cover; border-radius: 20px 20px 0 0;">
+                            {% endif %}
+                            <div class="card-body">
+                                <h5 class="card-title">{{ product.title }}</h5>
+                                <p class="card-text">{{ product.description|truncatewords:20 }}</p>
+                                <p class="fw-bold text-success">${{ product.price }}</p>
+                                <a href="{% url 'product_detail' product.id %}" class="btn-neon mt-2">View</a>
+                                <a href="{% url 'update' product.id %}" class="btn-neon mt-2">Update</a>
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        {% else %}
+            <div class="alert alert-info mt-4">
+                🚀 You don't have any products yet.
+            </div>
+        {% endif %}
+    </main>
+{% endblock %}

@@ -1,0 +1,125 @@
+{% extends 'store/base.html' %}
+{% load static %}
+
+{% block title %}
+    Profile
+{% endblock %}
+
+{% block content %}
+    <style>
+        .btn-neon {
+            font-weight: 600;
+            font-size: 1rem;
+            color: #00e5ff;
+            background: transparent;
+            border: 2px solid #00e5ff;
+            box-shadow: 0 0 10px #00e5ff, 0 0 25px #00e5ff;
+            transition: all 0.3s ease-in-out;
+            border-radius: 10px;
+            padding: 0.5rem 1rem;
+            cursor: pointer;
+            user-select: none;
+            display: inline-block;
+            text-decoration: none;
+        }
+
+        .btn-neon:hover, .btn-neon:focus {
+            background: #00e5ff;
+            color: #001f27;
+            box-shadow: 0 0 15px #00e5ff,
+            0 0 30px #00e5ff,
+            0 0 50px #00e5ff,
+            0 0 70px #00e5ff;
+            outline: none;
+        }
+
+
+        @keyframes galaxy {
+            0% {
+                background-position: 0% 50%;
+            }
+            50% {
+                background-position: 100% 50%;
+            }
+            100% {
+                background-position: 0% 50%;
+            }
+        }
+
+        .profile-container {
+            max-width: 800px;
+            margin: 100px auto;
+            background: rgba(255, 255, 255, 0.07);
+            backdrop-filter: blur(20px);
+            border-radius: 20px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5), 0 0 50px #00e5ff, 0 0 100px #00e5ff;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            padding: 2rem;
+            display: flex;
+            align-items: center;
+            gap: 2rem;
+            flex-wrap: wrap;
+            animation: fadeIn 1s ease forwards;
+            opacity: 0;
+        }
+
+        @keyframes fadeIn {
+            to {
+                opacity: 1;
+            }
+        }
+
+        .profile-img {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            object-fit: cover;
+            box-shadow: 0 0 20px #00e5ff, 0 0 40px #00e5ff;
+            border: 2px solid #00e5ff;
+        }
+
+        .profile-info {
+            flex: 1;
+        }
+
+        .profile-info h3 {
+            font-weight: 700;
+            font-size: 2rem;
+            margin-bottom: 1rem;
+            text-shadow: 0 0 15px #ff5af5, 0 0 30px #ff5af5;
+        }
+
+        .profile-item {
+            font-size: 1.2rem;
+            margin-bottom: 0.75rem;
+            text-shadow: 0 0 5px #00e5ff;
+        }
+
+        @media (max-width: 600px) {
+            .profile-container {
+                flex-direction: column;
+                text-align: center;
+            }
+        }
+    </style>
+
+    <div class="profile-container">
+        <div class="profile-image">
+            {% if user.image %}
+                <img src="{{ user.image.url }}" alt="{{ user.username }}" class="profile-img">
+            {% else %}
+                <img src="{% static 'images/default.jpeg' %}" alt="No image" class="profile-img">
+            {% endif %}
+        </div>
+        <div class="profile-info">
+            <h3>🌌 {{ user.username }}</h3>
+            <div class="profile-item">First Name: {{ user.first_name }}</div>
+            <div class="profile-item">Last Name: {{ user.last_name }}</div>
+            <div class="profile-item">Email: {{ user.email }}</div>
+            <div class="profile-item">Phone: {{ user.phone }}</div>
+        </div>
+        <div style="width: 100%; text-align: center; margin-top: 20px;">
+            <a href="{% url 'edit_profile' %}" class="btn-neon">Edit Profile</a>
+        </div>
+    </div>
+{% endblock %}

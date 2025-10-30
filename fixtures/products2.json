@@ -1,0 +1,57 @@
+[
+  {
+    "model": "store.product",
+    "pk": 1,
+    "fields": {
+      "title": "������� ASUS VivoBook 15",
+      "description": "˸���� � ���������������� ������� � ������� 15.6'' Full HD, ����������� Intel Core i5, 8 �� ��� � SSD �� 512 ��. �������� ��� ������, ����� � �����������.",
+      "price": 787.99,
+      "stock": 12,
+      "image": "products/kv.webp"
+    }
+  },
+  {
+    "model": "store.product",
+    "pk": 2,
+    "fields": {
+      "title": "MacBook Air M2",
+      "description": "������������ ������� �� ���� Apple M2",
+      "price": 1199.99,
+      "stock": 10,
+      "image": "products/macbook-air-midnight-config-20220606.jpeg"
+    }
+  },
+  {
+    "model": "store.product",
+    "pk": 3,
+    "fields": {
+      "title": "������� ���� Logitech G502 Hero",
+      "description": "16000 DPI, RGB-���������",
+      "price": 69.99,
+      "stock": 40,
+      "image": "products/g502-hero-gallery-1.png"
+    }
+  },
+  {
+    "model": "store.product",
+    "pk": 4,
+    "fields": {
+      "title": "Apple Watch SE (2nd Gen)",
+      "description": "����������� �����-���� � ������������� ����������, ��� � ������������.",
+      "price": 249.0,
+      "stock": 30,
+      "image": "products/download_1.jpeg"
+    }
+  },
+  {
+    "model": "store.product",
+    "pk": 5,
+    "fields": {
+      "title": "Samsung Galaxy Tab S9",
+      "description": "�������-������� � AMOLED-�������� � �������� S Pen � ���������.",
+      "price": 669.99,
+      "stock": 18,
+      "image": "products/download_2.jpeg"
+    }
+  }
+]

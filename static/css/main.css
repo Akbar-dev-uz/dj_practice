@@ -1,0 +1,95 @@
+/* Всё применяется только к .cosmic-theme */
+.cosmic-theme {
+    background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+    background-size: 400% 400%;
+    animation: galaxy 20s ease infinite;
+    font-family: 'Orbitron', sans-serif;
+    color: #ffffff;
+    min-height: 100vh;
+}
+
+/* Анимация фона */
+@keyframes galaxy {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+/* Неоновая кнопка */
+.cosmic-theme .btn-neon {
+    color: #fff;
+    background: #00c6ff;
+    border: none;
+    box-shadow: 0 0 10px #00c6ff, 0 0 20px #00c6ff;
+    transition: all 0.3s ease-in-out;
+}
+
+.cosmic-theme .btn-neon:hover {
+    background: #0072ff;
+    box-shadow: 0 0 20px #0072ff, 0 0 40px #0072ff;
+}
+
+/* Стеклянная карточка */
+.cosmic-theme .glass-card {
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(15px);
+    border-radius: 20px;
+    box-shadow: 0 8px 32px rgba(31, 38, 135, 0.37);
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    padding: 2rem;
+    color: white;
+}
+
+/* Навбар */
+.cosmic-theme .navbar {
+    background-color: rgba(0, 0, 0, 0.5) !important;
+    backdrop-filter: blur(10px);
+}
+
+.cosmic-theme .navbar-brand,
+.cosmic-theme .nav-link {
+    color: #ffffff !important;
+}
+
+.cosmic-theme .nav-link:hover {
+    color: #00c6ff !important;
+}
+
+/* Карточки */
+.cosmic-theme .card {
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    color: #fff;
+}
+
+/* Заголовки */
+.cosmic-theme h1,
+.cosmic-theme h2,
+.cosmic-theme h3,
+.cosmic-theme h4,
+.cosmic-theme h5 {
+    font-family: 'Orbitron', sans-serif;
+    color: #ffffff;
+}
+
+/* Алерты */
+.cosmic-theme .alert {
+    backdrop-filter: blur(5px);
+    border: none;
+    color: #fff;
+    font-weight: bold;
+}
+
+.cosmic-theme .alert-success {
+    background-color: rgba(0, 128, 0, 0.3);
+}
+
+.cosmic-theme .alert-error,
+.cosmic-theme .alert-danger {
+    background-color: rgba(255, 0, 0, 0.3);
+}
+
+.cosmic-theme .alert-info {
+    background-color: rgba(0, 191, 255, 0.3);
+}

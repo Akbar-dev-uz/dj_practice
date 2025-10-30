@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+{% load crispy_forms_tags %}
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no, user-scalable=yes">
+    <title>Register</title>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron&display=swap" rel="stylesheet"/>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"/>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            overflow-x: hidden; /* заменили overflow: hidden */
+            font-family: 'Orbitron', sans-serif;
+            color: #ffffff;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            zoom: 99%;
+        }
+
+
+        body::before {
+            content: "";
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle, rgba(255, 255, 255, 0.3) 1px, transparent 1px),
+            radial-gradient(circle, rgba(255, 255, 255, 0.2) 1px, transparent 1px);
+            background-size: 100px 100px, 50px 50px;
+            animation: starMove 100s linear infinite;
+            z-index: -1;
+        }
+
+        @keyframes starMove {
+            from {
+                background-position: 0 0, 0 0;
+            }
+            to {
+                background-position: -1000px 500px, 500px -1000px;
+            }
+        }
+
+        body::after {
+            content: "";
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, #0f2027, #203a43, #2c5364, #1a1a2e, #16213e);
+            background-size: 400% 400%;
+            animation: galaxy 30s ease infinite;
+            z-index: -2;
+        }
+
+        @keyframes galaxy {
+            0% {
+                background-position: 0% 50%;
+            }
+            50% {
+                background-position: 100% 50%;
+            }
+            100% {
+                background-position: 0% 50%;
+            }
+        }
+
+        .glass-card {
+            background: rgba(255, 255, 255, 0.07);
+            backdrop-filter: blur(20px);
+            border-radius: 20px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5), 0 0 50px #ff5af5, 0 0 100px #ff5af5;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            padding: 2rem 1rem;
+            color: white;
+            max-width: 500px;
+            width: 90%;
+            text-align: center;
+            overflow-x: hidden;
+        }
+
+        h3 {
+            font-weight: 700;
+            font-size: 2.4rem;
+            margin-bottom: 1.8rem;
+            text-shadow: 0 0 15px #ff5af5, 0 0 30px #ff5af5;
+        }
+
+        .btn-neon {
+            font-weight: 600;
+            font-size: 1.1rem;
+            color: #ff5af5;
+            background: transparent;
+            border: 2px solid #ff5af5;
+            box-shadow: 0 0 10px #ff5af5, 0 0 25px #ff5af5;
+            transition: all 0.3s ease-in-out;
+            border-radius: 10px;
+            padding: 0.75rem 1.5rem;
+            cursor: pointer;
+            user-select: none;
+            display: inline-block;
+        }
+
+        .btn-neon:hover, .btn-neon:focus {
+            background: #ff5af5;
+            color: #140021;
+            box-shadow: 0 0 15px #ff5af5,
+            0 0 30px #ff5af5,
+            0 0 50px #ff5af5,
+            0 0 70px #ff5af5;
+            outline: none;
+        }
+
+        .glass-card form {
+            width: 100%;
+        }
+
+        .glass-card input,
+        .glass-card .form-control {
+            max-width: 100%;
+            box-sizing: border-box;
+        }
+
+        /* Ограничить все элементы внутри glass-card */
+        .glass-card *,
+        .glass-card *:before,
+        .glass-card *:after {
+            box-sizing: border-box;
+        }
+
+        /* Убрать возможный overflow */
+        .glass-card {
+            overflow-x: hidden;
+        }
+
+        /* Установить max-width 100% для input, form, form-group */
+        .glass-card form,
+        .glass-card input,
+        .glass-card .form-control,
+        .glass-card .form-group,
+        .glass-card .row,
+        .glass-card .col {
+            max-width: 100%;
+        }
+
+        /* Убрать отрицательные margin у row если есть */
+        .glass-card .row {
+            margin-right: 0;
+            margin-left: 0;
+        }
+
+        /* Убрать padding у col если выходит */
+        .glass-card .col {
+            padding-right: 0;
+            padding-left: 0;
+        }
+
+    </style>
+</head>
+<body>
+<div class="glass-card">
+    <h3>🪐 Register</h3>
+    <form action="{% url 'register' %}" method="post">
+        {% csrf_token %}
+        {{ form|crispy }}
+
+        <button type="submit" class="btn btn-neon w-100 mt-3">Register</button>
+    </form>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

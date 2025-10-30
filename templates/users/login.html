@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+{% load crispy_forms_tags %}
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>Login</title>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron&display=swap" rel="stylesheet" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="{% static 'css/login.css' %}" rel="stylesheet" />
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+            font-family: 'Orbitron', sans-serif;
+            color: #ffffff;
+            min-height: 100vh;
+            position: relative;
+        }
+
+        /* Stars background */
+        body::before {
+            content: "";
+            position: fixed;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            background: radial-gradient(circle, rgba(255,255,255,0.3) 1px, transparent 1px),
+            radial-gradient(circle, rgba(255,255,255,0.2) 1px, transparent 1px);
+            background-size: 100px 100px, 50px 50px;
+            animation: starMove 100s linear infinite;
+            z-index: -1;
+        }
+
+        @keyframes starMove {
+            from { background-position: 0 0, 0 0; }
+            to { background-position: -1000px 500px, 500px -1000px; }
+        }
+
+        /* Galaxy gradient */
+        body::after {
+            content: "";
+            position: fixed;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            background: linear-gradient(135deg, #0f2027, #203a43, #2c5364, #1a1a2e, #16213e);
+            background-size: 400% 400%;
+            animation: galaxy 30s ease infinite;
+            z-index: -2;
+        }
+
+        @keyframes galaxy {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        .glass-card {
+            background: rgba(255, 255, 255, 0.07);
+            backdrop-filter: blur(20px);
+            border-radius: 20px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5), 0 0 50px #00e5ff, 0 0 100px #00e5ff;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            padding: 2rem;
+            color: white;
+            max-width: 420px;
+            width: 100%;
+            text-align: center;
+        }
+        h3 {
+            font-weight: 700;
+            font-size: 2.4rem;
+            margin-bottom: 1.8rem;
+            text-shadow: 0 0 15px #00c6ff, 0 0 30px #00c6ff;
+        }
+        .btn-neon {
+            font-weight: 600;
+            font-size: 1.1rem;
+            color: #00e5ff;
+            background: transparent;
+            border: 2px solid #00e5ff;
+            box-shadow: 0 0 10px #00e5ff, 0 0 25px #00e5ff;
+            transition: all 0.3s ease-in-out;
+            border-radius: 10px;
+            padding: 0.75rem 1.5rem;
+            cursor: pointer;
+            user-select: none;
+            display: inline-block;
+        }
+        .btn-neon:hover, .btn-neon:focus {
+            background: #00e5ff;
+            color: #001f27;
+            box-shadow:
+                    0 0 15px #00e5ff,
+                    0 0 30px #00e5ff,
+                    0 0 50px #00e5ff,
+                    0 0 70px #00e5ff;
+            outline: none;
+        }
+        .register-link {
+            font-size: 1.1rem;
+            margin-top: 1.8rem;
+        }
+        .register-link a {
+            color: #ff5af5;
+            text-decoration: none;
+            font-weight: 700;
+            text-shadow: 0 0 10px #ff5af5, 0 0 25px #ff5af5;
+            transition: all 0.3s ease-in-out;
+        }
+        .register-link a:hover, .register-link a:focus {
+            color: #ffffff;
+            text-shadow:
+                    0 0 15px #ff5af5,
+                    0 0 30px #ff5af5,
+                    0 0 50px #ff5af5;
+            outline: none;
+        }
+    </style>
+</head>
+<body class="d-flex align-items-center justify-content-center vh-100">
+
+<div class="glass-card">
+    <h3>🚀 Welcome Back</h3>
+    <form method="post">
+        {% csrf_token %}
+        {{ form|crispy }}
+
+        <div class="register-link">
+            Нет аккаунта? <a href="{% url 'register' %}">Зарегистрируйся!</a>
+        </div>
+
+        <button type="submit" class="btn btn-neon w-100 mt-3">Login</button>
+    </form>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

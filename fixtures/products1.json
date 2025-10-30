@@ -1,0 +1,68 @@
+[
+  {
+    "model": "store.product",
+    "pk": 1,
+    "fields": {
+      "title": "Ноутбук ASUS VivoBook 15",
+      "description": "˸Лёгкий и производительный ноутбук с экраном 15.6'' Full HD, процессором Intel Core i5, 8 ГБ ОЗУ и SSD на 512 ГБ. Подходит для работы, учёбы и развлечений.",
+      "price": 787.99,
+      "stock": 12,
+      "image": "products/kv.webp"
+    }
+  },
+  {
+    "model": "store.product",
+    "pk": 2,
+    "fields": {
+      "title": "MacBook Air M2",
+      "description": "Ультратонкий ноутбук на чипе Apple M2",
+      "price": 1199.99,
+      "stock": 10,
+      "image": "products/macbook-air-midnight-config-20220606.jpeg"
+    }
+  },
+  {
+    "model": "store.product",
+    "pk": 3,
+    "fields": {
+      "title": "Игровая мышка Logitech G502 Hero",
+      "description": "16000 DPI, RGB-подсветка",
+      "price": 69.99,
+      "stock": 40,
+      "image": "products/g502-hero-gallery-1.png"
+    }
+  },
+  {
+    "model": "store.product",
+    "pk": 4,
+    "fields": {
+      "title": "Apple Watch SE (2nd Gen)",
+      "description": "Современные смарт-часы с отслеживанием активности, сна и сердцебиения.",
+      "price": 249.0,
+      "stock": 30,
+      "image": "products/download_1.jpeg"
+    }
+  },
+  {
+    "model": "store.product",
+    "pk": 5,
+    "fields": {
+      "title": "Samsung Galaxy Tab S9",
+      "description": "Премиум-планшет с AMOLED-дисплеем и стилусом S Pen в комплекте.",
+      "price": 669.99,
+      "stock": 18,
+      "image": "products/download_2.jpeg"
+    }
+  },
+  {
+    "model": "store.product",
+    "pk": 6,
+    "fields": {
+      "title": "Смартфон Galaxy X Pro",
+      "description": "Флагманский смартфон с отличной производительностью и AMOLED-дисплеем.",
+      "price": 999.99,
+      "stock": 10,
+      "image": "products/Смартфон_Galaxy_X_Pro_Rv8R39e.jpeg"
+    }
+  }
+]
